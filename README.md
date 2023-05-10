@@ -14,15 +14,24 @@ The script (```reminder.sh```) is located in home directory and is started via c
 
 ## How it works
 
-### first startup
+### First startup
 > When the script is first started, it checks if bills files exist and create them if not.
-> Create initial predefined bills by making a combination of two arrays: locations (home, parrents, location 3, ...)  and bill type (electricity, water, heating , phone/internet, ...), adding month of payment and "not payed" status 
-> open window using "zenity" tool, showing list of all bills for payment where new bills can be added and stored in bills.txt file  
+
+> Create initial predefined bills by making a combination of two arrays: locations (home, parrents, location 3, ...)  and bill type (electricity, water, heating , phone/internet, ...), adding month of payment and "not payed" status
+
+> Finaly opens window ("zenity" tool - from filetext), showing list of all bills for payment where new bills can be added and stored in bills.txt file  
 
 ### Regular use
-> on PC startup it will show a window with payment status of monthly bills, where you can make manual corrections for the payed ones 
-> at every startup (usually in begining of month), script check if new predefined bills for current month are stored in bills.txt. If not, it will be created automaticaly.
+> On PC startup script will show a window with payment status of monthly bills, where you can make manual corrections for the payed ones
+
+> If all bills are with "payed" status the script will not show the window, until first start of next month 
+
+> At every startup (usually in begining of month), script check if new predefined bills for current month are stored in bills.txt. 
+
+> If new month bills are not not in the file, it will be created automaticaly.
+
 > If there are bills with "payed" status from previous month, you have button option to remove from bills.txt via separate confirmation window.
+
 > all the changes in bills.txt file are store in separate bills.log file ("diff" command format output is used with timestamp line)
 
 ## My comments
