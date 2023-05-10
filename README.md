@@ -7,9 +7,9 @@ Therefore I created simple bash script that runs on PC startup and display month
 The script (```reminder.sh```) is located in home directory and is started via crontab tool by following setup:
 > ``` @reboot sleep 30 ; /home/user_name/reminder_sh ``` - where 30 sec delay is to avoid possible startup isses, I use Ubuintu, but can be addopted  in different ways depending on your OS and ways to startup the script. 
 
-> the reminder script is calling another script ```bills.sh``` located in /home/user_name/.reminder directory, where also ```bills.txt``` active bills file is stored together with ```bills.log``` file that log the changes in active bills file. 
+> the reminder script is only used for calling another script ```bills.sh``` located in /home/user_name/.reminder directory, where also ```bills.txt``` active bills file is stored together with ```bills.log``` file that log the changes in active bills file. 
 
-> I use this folder for other reminder scripts created for various reasons and called via main reminder script
+> I use ```reminder.sh``` script for other reminder scripts created for various reasons, therefore separate folder is used to store several reminding scripts. Here I put only montly bills reminder script part
 
 
 ## How it works
