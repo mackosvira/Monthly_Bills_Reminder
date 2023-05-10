@@ -38,9 +38,10 @@ function new_month_add() {
 	then
 	        return
 	else
-		# add manually locations for which you pay bills
+		# change here manually locations for which you pay bills, e.g. "location 1" -> "home"
 	    	local lokacija=("location 1" "location 2" "location 3")
-		# add manually reegular bills that you regularly pay for above locations
+
+		# change here manually the regular bills for above locations (surplus ones can be deleted later)
 	        local tip=("electricity" "water supply" "heating")
 	        for item1 in "${lokacija[@]}"; do
 		        for item2 in "${tip[@]}"; do
