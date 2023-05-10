@@ -8,7 +8,7 @@
 #
 #  started via crontab tool
 #  crontab -e
-#  @reboot sleep 60 ; /home/macko/reminder_sh
+#  @reboot sleep 60 ; /home/username/reminder.sh
 #####################################################
 
 sleep 3
