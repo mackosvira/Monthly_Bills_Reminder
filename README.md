@@ -17,11 +17,11 @@ The script (```reminder.sh```) is located in home directory and is started via c
 ### First startup
 > When the script is first started, it checks if bills and log files exist and create them.
 
-> Create initial predefined bills by making a combination of two lists: locations (home, parrents, location 3, ...)  and bill type (electricity, water, heating , phone/internet, ...), adding month of payment and "not payed" status. These lists have to be manualy adopted in the code, the is no dialog for creating them.
+> Create initial predefined bills by making a combination of two lists: locations (home, parrents, location 3, ...)  and bill type (electricity, water, heating , phone/internet, ...), adding month of payment and "not payed" status. These lists have to be manualy adopted in the code, there is no dialog for creating them.
 
 > Finaly opens window ("zenity" tool - from filetext), showing list of all bills for payment where new bills can be added and stored in bills.txt file
 
-> Apart from predefined bills, the should be done manual adoptation of the script for some filepaths or possible installing zenity tool, if not present 
+> Apart from predefined bills, there should be some script manual adoptation for filepaths or if needed installing zenity tool 
 
 ### Regular use
 > On PC startup, the script will show a window with payment status of monthly bills, where you can make manual corrections for the payed ones and store the changes
@@ -39,5 +39,4 @@ The script (```reminder.sh```) is located in home directory and is started via c
 ## My comments
 After I started script use, I did not miss any payment so far.
 The script is initially created for practical reasons, but also for recreational purpose to keep in shape my "long time ago forgoten" knowledge in unix shel scripting.
-For learning purposes I plan to do more advanced version by using python and DB tables instead of text file, Also as an executable program adopted for Windows.
 
