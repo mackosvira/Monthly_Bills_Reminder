@@ -1,11 +1,10 @@
 # Monthly_Bills_Reminder
-I have on regular basis more than 15 monthly bills that should be payed until certain date in the month mainly between 15-20th of each month. Latelly there were several ommisions, reminders from providers and additional interest fees for some of them.
+Every month on regular basis I have more than 15 monthly bills to be payed until certain date in the month mainly until 15<sup>th</sup> or latest by 20<sup>th</sup> of each month. Latelly there were several bills payment ommisions, reminders from providers and additional interest fees that I had to pay for some of them.
 
-Therefore I created simple bash script that runs on startup and display monthly bills payment status using zenity tool.
+Therefore I created simple bash script that runs on PC startup and display monthly bills payment status, using zenity tool graphical windfows. Currently I use Ubintu, but previously the script was working fine also on MX linux. 
 
 ## Script and files locations
-The script (```reminder.sh```) is located in home directory and is stured via crontab tool by following setup:
-
+The script (```reminder.sh```) is located in home directory and is started via crontab tool by following setup:
 > ``` @reboot sleep 30 ; /home/user_name/reminder_sh ``` - where 30 sec delay is to avoid possible startup isses, I use Ubuintu, but can be addopted  in different ways depending on your OS and ways to startup the script. 
 
 > the reminder script is calling another script ```bills.sh``` located in /home/user_name/.reminder directory, where also ```bills.txt``` active bills file is stored together with '''bills.log''' file that log the changes in active bills file. 
