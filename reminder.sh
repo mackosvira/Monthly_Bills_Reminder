@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 #####################################################
 # Reminder script (exec on boot):
 # - to pay pay monthy bills
@@ -11,11 +12,13 @@
 #  @reboot sleep 60 ; /home/username/reminder.sh
 #####################################################
 
+
 sleep 3
 
 
 # Call script for bills payment reminder
 # it's recomended to use fullpath to avoid possible issues with startup tool
+
 exec /home/username/.reminder/bills.sh
 
 
