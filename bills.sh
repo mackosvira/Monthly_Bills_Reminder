@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 ###########################################################
 # Monthly bills payment reminder script  (exec on boot):  #
 #  crontab -e				                  #
@@ -15,6 +16,7 @@ log_file="/home/username/.reminder/bills.log"
 
 
 # Check function if bills file exists, if not create an empty file with header
+
 function check_file() {
 	local file1=$1		# ./bills.txt
 	local file2=$2		# ./bills.log
@@ -31,6 +33,7 @@ function check_file() {
 
 
 # Function to check if new month bills are added, and add into bills file
+
 function new_month_add() {
 	local month=$1		# current mm-yy
 	local file=$2		# temporary bills.txt.xx used throughug script execution
@@ -60,6 +63,7 @@ function new_month_add() {
 
 
 # Check function if last month bills are payed and remove them if confirmed
+
 function last_month_remove() {
 	local file1=$1		# temporary bills.txt.xx
 	local file2=$2		# ./bills.txt
@@ -87,7 +91,9 @@ function last_month_remove() {
 
 }
 
+
 # Function that store bills file changes into a log file
+
 function log_changes() {
 	local file1=$1		# bills.txt
 	local file2=$2		# temporary bills.txt.xx
@@ -101,6 +107,7 @@ function log_changes() {
 	fi
 }
 
+
 # Call function to check if the files exist, if not create an empty files
 check_file $bills_file $log_file
 
@@ -108,16 +115,22 @@ check_file $bills_file $log_file
 # Copy active bills file into temporary file used by the script
 cp $bills_file "$bills_file".$$
 
+
 # Call function to check if new month bills are added
 new_month_add `date +%m-%y` "$bills_file".$$
 log_changes $bills_file "$bills_file".$$ $log_file
 
+
 # Check if file have open bills, if yes then display window with bills where user can also input and edit the list
 # If all bils are payed the windoiw will not be shown
+
 if grep -q "not payed" "$bills_file".$$; then0
 	env DISPLAY=:0.0 /usr/bin/zenity --text-info --editable --filename="$bills_file".$$ --width=700 --height=600 --font="Monospace bold 12" --title="Monthly Bills - payment change status" --ok-label "Change and exit" --cancel-label "Delete old bills" > $bills_file || last_month_remove "$bills_file".$$ $bills_file
 fi
+
+
 log_changes "$bills_file".$$ $bills_file $log_file
+
 
 # remove the temporary file
 rm "$bills_file".$$
