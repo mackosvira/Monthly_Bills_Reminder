@@ -7,7 +7,7 @@ Therefore I created simple bash script that runs on PC startup and display month
 The script (```reminder.sh```) is located in home directory and is started via crontab tool by following setup:
 > ``` @reboot sleep 30 ; /home/user_name/reminder_sh ``` - where 30 sec delay is to avoid possible startup isses, I use Ubuintu, but can be addopted  in different ways depending on your OS and ways to startup the script. 
 
-> the reminder script is calling another script ```bills.sh``` located in /home/user_name/.reminder directory, where also ```bills.txt``` active bills file is stored together with '''bills.log''' file that log the changes in active bills file. 
+> the reminder script is calling another script ```bills.sh``` located in /home/user_name/.reminder directory, where also ```bills.txt``` active bills file is stored together with ```bills.log``` file that log the changes in active bills file. 
 
 > I use this folder for other reminder scripts created for various reasons and called via main reminder script
 
@@ -15,16 +15,18 @@ The script (```reminder.sh```) is located in home directory and is started via c
 ## How it works
 
 ### First startup
-> When the script is first started, it checks if bills files exist and create them if not.
+> When the script is first started, it checks if bills and log files exist and create them.
 
-> Create initial predefined bills by making a combination of two arrays: locations (home, parrents, location 3, ...)  and bill type (electricity, water, heating , phone/internet, ...), adding month of payment and "not payed" status
+> Create initial predefined bills by making a combination of two lists: locations (home, parrents, location 3, ...)  and bill type (electricity, water, heating , phone/internet, ...), adding month of payment and "not payed" status. These lists have to be manualy adopted in the code, the is no dialog for creating them.
 
-> Finaly opens window ("zenity" tool - from filetext), showing list of all bills for payment where new bills can be added and stored in bills.txt file  
+> Finaly opens window ("zenity" tool - from filetext), showing list of all bills for payment where new bills can be added and stored in bills.txt file
+
+> Apart from predefined bills, the should be done manual adoptation of the script for some filepaths or possible installing zenity tool, if not present 
 
 ### Regular use
-> On PC startup script will show a window with payment status of monthly bills, where you can make manual corrections for the payed ones
+> On PC startup, the script will show a window with payment status of monthly bills, where you can make manual corrections for the payed ones and store the changes
 
-> If all bills are with "payed" status the script will not show the window, until first start of next month 
+> If all monthly bills are with "payed" status the script will not show the window, until first PC startup in the next month. 
 
 > At every startup (usually in begining of month), script check if new predefined bills for current month are stored in bills.txt. 
 
