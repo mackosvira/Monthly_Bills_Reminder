@@ -11,8 +11,8 @@
 # Define the file names for the active bills and log files 
 # it's recomended to use fullpath to avoid possible issues with startup tool
 
-bills_file="/home/username/.reminder/bills.txt"
-log_file="/home/username/.reminder/bills.log"
+bills_file="./.reminder/bills.txt"
+log_file="./.reminder/bills.log"
 
 
 # Check function if bills file exists, if not create an empty file with header
@@ -124,7 +124,7 @@ log_changes $bills_file "$bills_file".$$ $log_file
 # Check if file have open bills, if yes then display window with bills where user can also input and edit the list
 # If all bils are payed the windoiw will not be shown
 
-if grep -q "not payed" "$bills_file".$$; then0
+if grep -q "not payed" "$bills_file".$$; then
 	env DISPLAY=:0.0 /usr/bin/zenity --text-info --editable --filename="$bills_file".$$ --width=700 --height=600 --font="Monospace bold 12" --title="Monthly Bills - payment change status" --ok-label "Change and exit" --cancel-label "Delete old bills" > $bills_file || last_month_remove "$bills_file".$$ $bills_file
 fi
 
