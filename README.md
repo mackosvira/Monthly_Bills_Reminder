@@ -1,20 +1,19 @@
 # Monthly_Bills_Reminder
-If you have 10+ monthly bills to be payed until certain date there is high probabiolity for bills payment ommisions, to get reminders from providers and additional interest fees to be paid.
+Simple reminder script that can be usefull if you have 10+ monthly bills, to avoid reminders and additional fees to be paid.
 
-So I created simple bash script that runs on PC startup and display monthly bills payment status, with zenity graphical tool to show bills status in a window. 
+It is simple bash script that runs on PC startup and display monthly bills payment status on simple GUI, using zenity tool, to list bills status with possibility to make changes.
+If  you don't have zenity tool you can install with:
+> ``` $ sudo apt-get install zenity ```
+
+I use it on Ubuntu, via reminder.sh script running on PC startup (to remind you before starting to do anything else you had in mind): 
+> ``` @reboot sleep 30 ; /././reminder_sh ``` - 30 sec delay is to avoid some startup isses (previously used on MX linux, with different startup setup)
 
 ## Script and files locations
-Main script (```reminder.sh```) in home directory, started via crontab tool by following setup:
+Main script (```reminder.sh```) is in home directory, used for other reminder scripts for various reasons, therefore I use separate folder ".reminder" to store similar scripts (other reminders)
 
-> ``` @reboot sleep 30 ; /home/user_name/reminder_sh ``` - 30 sec delay to avoid some startup isses (works on Ubuntu, previously used on MX linux with different startup setup) 
+Bill payment reminder script ```bills.sh``` I place in /.reminder directory, where script creates ```bills.txt``` active bills file,  and ```bills.log``` file that log the changes in active bills file. 
 
-> Main ```reminder.sh``` script is used for other reminder scripts for various reasons, therefore a separate folder ".reminder" is used to store similar scripts
-
-Reminder script is only used for calling the main bill payment reminder script ```bills.sh``` located in /home/user_name/.reminder directory, where also ```bills.txt``` active bills file is stored together with ```bills.log``` file that log the changes in active bills file. 
-
-> Note that manuall input in script is needed for exact files variables (use full path to avoid errors)
-
-> It requires installing zenity tool, if not there by default 
+> Note that manuall input in script is needed for exact file paths (use full path to avoid errors)
 
 
 ## How it works
