@@ -86,7 +86,10 @@ function last_month_remove() {
 	grep "$last_month_value   payed" $file1 > "old_bills".$$
 
 	# Display confirmation prompt
-	env DISPLAY=:0.0 /usr/bin/zenity --text-info --filename="old_bills".$$ --title="Delete old bills?" --width=700 --height=250 --font="Monospace bold 12" --ok-label "Delete" --cancel-label "Cancel" && grep -v "$last_month_value   payed" $file1 > $file2 || cp $file1 $file2
+	env DISPLAY=:0.0 /usr/bin/zenity --text-info --filename="old_bills".$$ \
+	--title="Delete old bills?" --width=700 --height=250 \
+	--font="Monospace bold 12" --ok-label "Delete" --cancel-label "Cancel" \
+	&& grep -v "$last_month_value   payed" $file1 > $file2 || cp $file1 $file2
 	rm "old_bills".$$
 
 }
@@ -125,7 +128,11 @@ log_changes $bills_file "$bills_file".$$ $log_file
 # If all bils are payed the windoiw will not be shown
 
 if grep -q "not payed" "$bills_file".$$; then
-	env DISPLAY=:0.0 /usr/bin/zenity --text-info --editable --filename="$bills_file".$$ --width=700 --height=600 --font="Monospace bold 12" --title="Monthly Bills - payment change status" --ok-label "Change and exit" --cancel-label "Delete old bills" > $bills_file || last_month_remove "$bills_file".$$ $bills_file
+	env DISPLAY=:0.0 /usr/bin/zenity --text-info --editable \
+	--filename="$bills_file".$$ --width=700 --height=600 \
+	--font="Monospace bold 12" --title="Monthly Bills - payment change status" \
+	--ok-label "Change and exit" --cancel-label "Delete old bills" > $bills_file \
+	|| last_month_remove "$bills_file".$$ $bills_file
 fi
 
 
